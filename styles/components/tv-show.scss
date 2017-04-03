@@ -1,0 +1,22 @@
+.tv-show {
+    display: inline-block;
+    margin: 10px;
+    width: 155px;
+    vertical-align: top;
+}
+    .tv-show-image {
+        position: relative;
+        img {
+            display: block;
+        }
+    }
+
+    .tv-show-details {
+
+    }
+        .tv-show-details-current {
+            font-size: 12px;
+        }
+        .tv-show-details-title {
+            font-size: 12px;
+        }

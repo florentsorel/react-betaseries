@@ -1,0 +1,66 @@
+#app {
+    height: 100%;
+}
+
+body {
+    background-color: #F4F4F4;
+}
+
+.clearfix {
+    @include clearfix();
+}
+
+.content {
+    margin: 20px 0 80px;
+}
+
+.flexbox-container {
+    display: flex;
+    min-height: 100%;
+    flex-direction: row;
+    box-orient: horizontal;
+}
+
+.main-container {
+    position: relative;
+    flex: 1;
+}
+
+// Sidebar
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    flex: 0 180px;
+    background: $sidebar-bg;
+}
+
+    .sidebar-logo {
+        height: 60px;
+        line-height: 60px;
+        color: #FFFFFF;
+        font-size: 20px;
+        margin-left: $line-height-computed / 2;
+    }
+
+    .sidebar-menu {
+
+    }
+        .sidebar-menu-item {
+            width: 158px;
+            margin: 2px ($line-height-computed / 2);
+        }
+        .sidebar-menu-item-link {
+            padding: ($line-height-computed / 4) ($line-height-computed / 2);
+            display: block;
+            width: 100%;
+            color: #CECECE;
+            &:hover {
+                color: #FFFFFF;
+            }
+            &.mod-active {
+                color: #FFFFFF;
+                background-color: #202020;
+                border-radius: 100px;
+            }
+        }
