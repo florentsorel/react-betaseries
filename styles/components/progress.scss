@@ -7,7 +7,7 @@
     width: 100%;
     background-color: #BD1E1E;
     &.has-started {
-        background-color: transparent;
+        background-color: rgba(0, 0, 0, .6);
     }
 }
 
