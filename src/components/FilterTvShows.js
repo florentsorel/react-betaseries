@@ -10,12 +10,12 @@ const FilterTvShows = ({filter}) => (
     </li>
     <li>
       <NavLink to="/archived" exact activeClassName="is-active">
-        <span>Archivés</span>
+        <span>Archivées</span>
       </NavLink>
     </li>
     <li>
       <NavLink to="/not-started" exact activeClassName="is-active">
-        <span>Archivées et non commencés</span>
+        <span>Archivées et non commencées</span>
       </NavLink>
     </li>
     <li>
