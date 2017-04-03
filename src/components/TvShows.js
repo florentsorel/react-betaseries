@@ -24,6 +24,7 @@ const TvShows = ({
             percentage={Number(show.user.status)}
             remaining={Number(show.user.remaining)}
             last={show.user.last}
+            isArchived={show.user.archived}
           />
         )}
       </div>
@@ -41,6 +42,7 @@ TvShows.propTypes = {
         poster: PropTypes.string
       }),
       user: PropTypes.shape({
+        archived: PropTypes.bool.isRequired,
         status: PropTypes.string.isRequired,
         remaining: PropTypes.string.isRequired,
         last: PropTypes.string.isRequired,

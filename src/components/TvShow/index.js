@@ -1,8 +1,8 @@
 import React, {
     PropTypes
 } from 'react'
-import Progress from './Progress'
-import Remaining from "./Remaining";
+import Progress from '../Progress'
+import Remaining from '../Remaining';
 
 const TvShow = ({
   id,
@@ -11,6 +11,7 @@ const TvShow = ({
   percentage,
   remaining,
   last,
+  isArchived
 }) => (
   <div className="tv-show">
     <div className="tv-show-image">
@@ -33,6 +34,9 @@ TvShow.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string,
   percentage: PropTypes.number.isRequired,
+  remaining: PropTypes.number.isRequired,
+  last: PropTypes.string.isRequired,
+  isArchived: PropTypes.bool.isRequired,
 }
 
 export default TvShow
