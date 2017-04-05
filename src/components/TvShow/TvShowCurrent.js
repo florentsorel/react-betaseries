@@ -18,7 +18,7 @@ const TvShowCurrent = ({
 }) => (
   <div className="tv-show">
     <div className="tv-show-header">
-      <SeenButton onClick={onMarkAsSeen} isFetching={isFetching}/>
+      <SeenButton onClick={onMarkAsSeen} isFetching={isFetching} isFinished={percentage === 100}/>
     </div>
     <div className="tv-show-image">
       {isFetching ? <Spinner className="is-tv-show"/> : null}

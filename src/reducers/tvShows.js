@@ -26,6 +26,12 @@ export default function tvShows(state = initialState, action) {
           isFetching: true
         }
       })}
+    case types.REQUEST_TV_SHOW:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case types.RECEIVE_TV_SHOW:
+      return state.map(item => item.id === action.show.id ? action.show : item)
     default:
       return state
   }

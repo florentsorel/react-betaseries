@@ -13,6 +13,12 @@ export function fetchUserTvShows() {
   }
 }
 
+export function fetchTvShow(id) {
+  return dispatch => {
+    dispatch(requestTvShow(id))
+  }
+}
+
 // Marque un épisode comme vu
 export function onMarkAsSeen(tvShowId) {
   return dispatch => {
@@ -31,6 +37,20 @@ function receiveUserTvShows(shows) {
   return {
     type: types.RECEIVE_USER_TV_SHOWS,
     shows
+  }
+}
+
+// TV SHOW
+function requestTvShow() {
+  return {
+    type: types.REQUEST_TV_SHOW
+  }
+}
+
+function receiveTvShow(show) {
+  return {
+    type: types.RECEIVE_TV_SHOW,
+    show
   }
 }
 
