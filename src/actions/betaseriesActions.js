@@ -1,6 +1,7 @@
 import * as types from '../constants/actionTypes'
 import * as betaseries from '../betaseries'
 
+// Exécuté lorsque le composant UserTvShowsContainer est monté
 export function fetchUserTvShows() {
   return dispatch => {
     dispatch(requestUserTvShows())
@@ -12,9 +13,10 @@ export function fetchUserTvShows() {
   }
 }
 
-export function fetchTvShow(id) {
+// Marque un épisode comme vu
+export function onMarkAsSeen(tvShowId) {
   return dispatch => {
-    dispatch(requestTvShow(id))
+    dispatch(requestLastEpisodeNotSeen(tvShowId))
   }
 }
 
@@ -32,16 +34,12 @@ function receiveUserTvShows(shows) {
   }
 }
 
-// TV SHOW
-function requestTvShow() {
+// Permet de définir le début du chargement
+export function requestLastEpisodeNotSeen(tvShowId) {
   return {
-    type: types.REQUEST_TV_SHOW
-  }
-}
-
-function receiveTvShow(show) {
-  return {
-    type: types.RECEIVE_TV_SHOW,
-    show
+    type: types.REQUEST_LAST_EPISODE_NOT_SEEN,
+    payload: {
+      id: tvShowId
+    }
   }
 }

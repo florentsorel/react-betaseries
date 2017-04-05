@@ -2,7 +2,7 @@ import React, {
   Component
 } from 'react'
 import { connect } from 'react-redux'
-import { fetchUserTvShows } from '../actions/betaseriesActions'
+import { fetchUserTvShows, onMarkAsSeen } from '../actions/betaseriesActions'
 import TvShows from '../components/TvShows'
 
 
@@ -24,14 +24,13 @@ const getVisibleTvShows = (shows, filter) => {
 class UserTvShowsContainer extends Component {
 
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(fetchUserTvShows())
+    this.props.fetchUserTvShows()
   }
 
   render() {
-    const { isFetching, tvShows, filter } = this.props
+    const { isFetching, tvShows, filter, onMarkAsSeen } = this.props
     return (
-      <TvShows filter={filter} isFetching={isFetching} shows={tvShows} />
+      <TvShows filter={filter} isFetching={isFetching} shows={tvShows} onMarkAsSeen={onMarkAsSeen} />
     )
   }
 }
@@ -41,4 +40,7 @@ const mapStateToProps = (state, ownProps) => ({
   tvShows: getVisibleTvShows(state.tvShows.items, ownProps.filter),
 })
 
-export default connect(mapStateToProps)(UserTvShowsContainer)
+export default connect(mapStateToProps, {
+  fetchUserTvShows,
+  onMarkAsSeen,
+})(UserTvShowsContainer)

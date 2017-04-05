@@ -8,7 +8,8 @@ import Spinner from "./Spinner";
 const TvShows = ({
   filter,
   shows,
-  isFetching
+  isFetching,
+  onMarkAsSeen
 }) => {
   return (
     <div>
@@ -16,17 +17,20 @@ const TvShows = ({
       <div className="content">
         {isFetching ? <Spinner /> : null}
         {shows.map(show =>
-          <TvShow
-            key={show.id}
-            id={show.id}
-            title={show.title}
-            image={show.images.poster}
-            percentage={Number(show.user.status)}
-            remaining={Number(show.user.remaining)}
-            last={show.user.last}
-            isArchived={show.user.archived}
-          />
-        )}
+            <TvShow
+              key={show.id}
+              id={show.id}
+              title={show.title}
+              image={show.images.poster}
+              status={Number(show.user.status)}
+              remaining={Number(show.user.remaining)}
+              last={show.user.last}
+              isArchived={show.user.archived}
+              onMarkAsSeen={() => onMarkAsSeen(show.id)}
+              isFetching={show.isFetching}
+            />
+          )
+        }
       </div>
     </div>
   )
@@ -34,6 +38,7 @@ const TvShows = ({
 
 TvShows.propTypes = {
   isFetching: PropTypes.bool.isRequired,
+  onMarkAsSeen: PropTypes.func.isRequired,
   shows: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

@@ -1,9 +1,30 @@
 .tv-show {
+    position: relative;
     display: inline-block;
     margin: 10px;
     width: 155px;
     vertical-align: top;
 }
+    .tv-show-header {
+        text-align: right;
+        height: 20px;
+    }
+        .tv-show-header-button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            color: #666666;
+            &.is-fetching {
+                display: none;
+            }
+            &.mod-success {
+                color: #9DD654;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+
     .tv-show-image {
         position: relative;
         img {

@@ -10,6 +10,17 @@
     padding: 20px 0;
     margin: 0px auto;
     width: 100%;
+    &.is-tv-show {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.6);
+        .spinner {
+            margin: auto;
+        }
+    }
 }
 
 .spinner {

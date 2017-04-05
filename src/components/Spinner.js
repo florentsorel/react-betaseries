@@ -1,7 +1,7 @@
-import React  from 'react';
+import React, { PropTypes }  from 'react';
 
-const Spinner = () => (
-  <div className="spinner-container">
+const Spinner = ({className}) => (
+  <div className={`spinner-container ${className}`}>
     <div className="spinner">
       <div className="rect1"></div>
       <div className="rect2"></div>
@@ -11,5 +11,9 @@ const Spinner = () => (
     </div>
   </div>
 )
+
+Spinner.propTypes = {
+  className: PropTypes.string,
+}
 
 export default Spinner;

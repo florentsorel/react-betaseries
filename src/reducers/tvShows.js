@@ -16,6 +16,16 @@ export default function tvShows(state = initialState, action) {
           isFetching: false,
           items: [...action.shows]
         })
+    case types.REQUEST_LAST_EPISODE_NOT_SEEN:
+      return {...state, items: state.items.map((tvShow) => {
+        if (action.payload.id !== tvShow.id) {
+          return tvShow
+        }
+        return {
+          ...tvShow,
+          isFetching: true
+        }
+      })}
     default:
       return state
   }

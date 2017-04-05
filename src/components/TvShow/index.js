@@ -1,42 +1,58 @@
 import React, {
     PropTypes
 } from 'react'
-import Progress from '../Progress'
-import Remaining from '../Remaining';
+import TvShowCurrent from './TvShowCurrent';
+import TvShowArchived from './TvShowArchived';
 
 const TvShow = ({
   id,
   title,
   image,
-  percentage,
+  status,
   remaining,
   last,
-  isArchived
-}) => (
-  <div className="tv-show">
-    <div className="tv-show-image">
-      {image !== null ? <img src={image} alt={title} width="155"/> : 'Aucune image'}
-      <Progress value={percentage} />
-    </div>
-    <div className="tv-show-details">
-      <div className="tv-show-details-current">
-        {last} <Remaining value={remaining} />
-      </div>
-      <div className="tv-show-details-title">{title}</div>
+  isArchived,
+  onMarkAsSeen,
+  isFetching
+}) => {
+  if (isArchived === false) {
+    return (
+      <TvShowCurrent
+        isFetching={isFetching}
+        id={id}
+        title={title}
+        image={image}
+        percentage={Number(status)}
+        remaining={Number(remaining)}
+        last={last}
+        onMarkAsSeen={onMarkAsSeen}
+      />
+    )
+  }
+  else {
+    return (
+      <TvShowArchived
+        id={id}
+        title={title}
+        image={image}
+        percentage={Number(status)}
+        remaining={Number(remaining)}
+        last={last}
+      />
+    )
+  }
 
-    </div>
-
-  </div>
-)
+}
 
 TvShow.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string,
-  percentage: PropTypes.number.isRequired,
+  status: PropTypes.number.isRequired,
   remaining: PropTypes.number.isRequired,
   last: PropTypes.string.isRequired,
   isArchived: PropTypes.bool.isRequired,
+  onMarkAsSeen: PropTypes.func.isRequired,
 }
 
 export default TvShow
