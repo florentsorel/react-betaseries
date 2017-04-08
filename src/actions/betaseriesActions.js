@@ -13,16 +13,16 @@ export function fetchUserTvShows() {
   }
 }
 
-export function fetchTvShow(id) {
-  return dispatch => {
-    dispatch(requestTvShow(id))
-  }
-}
-
 // Marque un épisode comme vu
 export function onMarkAsSeen(tvShowId) {
   return dispatch => {
     dispatch(requestLastEpisodeNotSeen(tvShowId))
+
+    return betaseries.getLastEpisodeUnseen(tvShowId)
+      .then(response => response.data.shows[0].unseen[0].id)
+      .then(betaseries.postEpisodeAsSeen)
+      .then(() => betaseries.getTvShow(tvShowId))
+      .then(show => dispatch(receiveTvShow(show.data.show)))
   }
 }
 
@@ -41,21 +41,17 @@ function receiveUserTvShows(shows) {
 }
 
 // TV SHOW
-function requestTvShow() {
-  return {
-    type: types.REQUEST_TV_SHOW
-  }
-}
-
 function receiveTvShow(show) {
   return {
     type: types.RECEIVE_TV_SHOW,
-    show
+    payload: {
+      show
+    }
   }
 }
 
 // Permet de définir le début du chargement
-export function requestLastEpisodeNotSeen(tvShowId) {
+function requestLastEpisodeNotSeen(tvShowId) {
   return {
     type: types.REQUEST_LAST_EPISODE_NOT_SEEN,
     payload: {

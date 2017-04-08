@@ -26,12 +26,19 @@ export default function tvShows(state = initialState, action) {
           isFetching: true
         }
       })}
-    case types.REQUEST_TV_SHOW:
-      return Object.assign({}, state, {
-        isFetching: true
-      })
     case types.RECEIVE_TV_SHOW:
-      return state.map(item => item.id === action.show.id ? action.show : item)
+      const show = action.payload.show
+      const id = action.payload.show.id
+      return {...state, items: state.items.map(tvShow => {
+        if (id !== tvShow.id) {
+          return tvShow
+        }
+
+        return {
+          ...show,
+          isFetching: false
+        }
+      })}
     default:
       return state
   }

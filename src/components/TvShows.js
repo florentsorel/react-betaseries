@@ -48,8 +48,8 @@ TvShows.propTypes = {
       }),
       user: PropTypes.shape({
         archived: PropTypes.bool.isRequired,
-        status: PropTypes.string.isRequired,
-        remaining: PropTypes.string.isRequired,
+        status: PropTypes.number.isRequired,
+        remaining: PropTypes.number.isRequired,
         last: PropTypes.string.isRequired,
       })
     })

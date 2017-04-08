@@ -22,8 +22,8 @@ const TvShow = ({
         id={id}
         title={title}
         image={image}
-        percentage={Number(status)}
-        remaining={Number(remaining)}
+        percentage={status}
+        remaining={remaining}
         last={last}
         onMarkAsSeen={onMarkAsSeen}
       />
@@ -35,8 +35,8 @@ const TvShow = ({
         id={id}
         title={title}
         image={image}
-        percentage={Number(status)}
-        remaining={Number(remaining)}
+        percentage={status}
+        remaining={remaining}
         last={last}
       />
     )
