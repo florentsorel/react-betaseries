@@ -2,7 +2,7 @@ import React, {
   Component
 } from 'react'
 import { connect } from 'react-redux'
-import { fetchUserTvShows, onMarkAsSeen } from '../actions/betaseriesActions'
+import { fetchUserTvShows, onMarkAsSeen, onUnarchive } from '../actions/betaseriesActions'
 import TvShows from '../components/TvShows'
 
 
@@ -28,9 +28,9 @@ class UserTvShowsContainer extends Component {
   }
 
   render() {
-    const { isFetching, tvShows, filter, onMarkAsSeen } = this.props
+    const { isFetching, tvShows, filter, onMarkAsSeen, onUnarchive } = this.props
     return (
-      <TvShows filter={filter} isFetching={isFetching} shows={tvShows} onMarkAsSeen={onMarkAsSeen} />
+      <TvShows filter={filter} isFetching={isFetching} shows={tvShows} onMarkAsSeen={onMarkAsSeen} onUnarchive={onUnarchive} />
     )
   }
 }
@@ -43,4 +43,5 @@ const mapStateToProps = (state, ownProps) => ({
 export default connect(mapStateToProps, {
   fetchUserTvShows,
   onMarkAsSeen,
+  onUnarchive,
 })(UserTvShowsContainer)

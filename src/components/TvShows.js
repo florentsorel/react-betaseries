@@ -9,7 +9,8 @@ const TvShows = ({
   filter,
   shows,
   isFetching,
-  onMarkAsSeen
+  onMarkAsSeen,
+  onUnarchive
 }) => {
   return (
     <div>
@@ -27,6 +28,7 @@ const TvShows = ({
               last={show.user.last}
               isArchived={show.user.archived}
               onMarkAsSeen={() => onMarkAsSeen(show.id)}
+              onUnarchive={() => onUnarchive(show.id)}
               isFetching={show.isFetching}
             />
           )
@@ -39,6 +41,7 @@ const TvShows = ({
 TvShows.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   onMarkAsSeen: PropTypes.func.isRequired,
+  onUnarchive: PropTypes.func.isRequired,
   shows: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

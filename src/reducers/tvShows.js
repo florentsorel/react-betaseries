@@ -11,11 +11,11 @@ export default function tvShows(state = initialState, action) {
       return Object.assign({}, state, {
         isFetching: true
       })
-      case types.RECEIVE_USER_TV_SHOWS:
-        return Object.assign({}, state, {
-          isFetching: false,
-          items: [...action.shows]
-        })
+    case types.RECEIVE_USER_TV_SHOWS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: [...action.shows]
+      })
     case types.REQUEST_LAST_EPISODE_NOT_SEEN:
       return {...state, items: state.items.map((tvShow) => {
         if (action.payload.id !== tvShow.id) {
@@ -37,6 +37,26 @@ export default function tvShows(state = initialState, action) {
         return {
           ...show,
           isFetching: false
+        }
+      })}
+    case types.REQUEST_REMOVE_TV_SHOW_FROM_ARCHIVE:
+      return {...state, items: state.items.map((tvShow) => {
+        if (action.payload.id !== tvShow.id) {
+          return tvShow
+        }
+        return {
+          ...tvShow,
+          isFetching: true
+        }
+      })}
+    case types.RECEIVE_REMOVE_TV_SHOW_FROM_ARCHIVE:
+      return {...state, items: state.items.map((tvShow) => {
+        if (action.payload.id !== tvShow.id) {
+          return tvShow
+        }
+        return {
+          ...tvShow,
+          isFetching: true
         }
       })}
     default:

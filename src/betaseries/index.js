@@ -30,6 +30,16 @@ export function postEpisodeAsSeen(episodeId) {
   )
 }
 
+export function deleteShowArchive(showId) {
+  return client.delete(
+    'shows/archive', {
+      params: {
+        id: showId
+      }
+    }
+  )
+}
+
 export function getTvShow(id) {
   return client.get(
     'shows/display', {

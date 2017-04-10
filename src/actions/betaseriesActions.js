@@ -26,6 +26,16 @@ export function onMarkAsSeen(tvShowId) {
   }
 }
 
+// Sort une série des archive
+export function onUnarchive(tvShowId) {
+  return dispatch => {
+    dispatch(requestRemoveTvShowFromArchive(tvShowId))
+
+    return betaseries.deleteShowArchive(tvShowId)
+      .then(response => dispatch(receiveTvShow(response.data.show)))
+  }
+}
+
 // USER TV SHOWS
 function requestUserTvShows() {
   return {
@@ -54,6 +64,15 @@ function receiveTvShow(show) {
 function requestLastEpisodeNotSeen(tvShowId) {
   return {
     type: types.REQUEST_LAST_EPISODE_NOT_SEEN,
+    payload: {
+      id: tvShowId
+    }
+  }
+}
+
+function requestRemoveTvShowFromArchive(tvShowId) {
+  return {
+    type: types.REQUEST_REMOVE_TV_SHOW_FROM_ARCHIVE,
     payload: {
       id: tvShowId
     }

@@ -4,7 +4,7 @@ import React, {
 import Progress from './Progress'
 import Remaining from './Remaining';
 import SeenButton from './SeenButton';
-import Spinner from "../Spinner";
+import Spinner from '../Spinner';
 
 const TvShowCurrent = ({
   id,

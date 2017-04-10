@@ -13,6 +13,7 @@ const TvShow = ({
   last,
   isArchived,
   onMarkAsSeen,
+  onUnarchive,
   isFetching
 }) => {
   if (isArchived === false) {
@@ -32,12 +33,14 @@ const TvShow = ({
   else {
     return (
       <TvShowArchived
+        isFetching={isFetching}
         id={id}
         title={title}
         image={image}
         percentage={status}
         remaining={remaining}
         last={last}
+        onUnarchive={onUnarchive}
       />
     )
   }

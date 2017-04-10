@@ -3,6 +3,8 @@ import React, {
 } from 'react'
 import Progress from './Progress'
 import Remaining from './Remaining';
+import UnarchiveButton from './UnarchiveButton';
+import Spinner from '../Spinner';
 
 const TvShowArchived = ({
   id,
@@ -11,10 +13,16 @@ const TvShowArchived = ({
   percentage,
   remaining,
   last,
-  isArchived
+  onUnarchive,
+  isArchived,
+  isFetching
 }) => (
   <div className="tv-show">
+    <div className="tv-show-header">
+      <UnarchiveButton onClick={onUnarchive} isFetching={isFetching}/>
+    </div>
     <div className="tv-show-image">
+      {isFetching ? <Spinner className="is-tv-show"/> : null}
       {image !== null ? <img src={image} alt={title} width="155"/> : 'Aucune image'}
       <Progress value={percentage}/>
     </div>
@@ -36,6 +44,7 @@ TvShowArchived.propTypes = {
   percentage: PropTypes.number.isRequired,
   remaining: PropTypes.number.isRequired,
   last: PropTypes.string.isRequired,
+  onUnarchive: PropTypes.func.isRequired,
 }
 
 export default TvShowArchived
